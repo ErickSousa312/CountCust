@@ -11,7 +11,8 @@ export default function MainView({ children }) {
         <meta name="keywords" content="Roupas, Calçados, Bonés"></meta>
         <meta
           name="description"
-          content="Encontre a melhor roupa para você"
+          content="Encontre a melhor roupa para você+
+          "
         ></meta>
       </Head>
       <Navbar />
