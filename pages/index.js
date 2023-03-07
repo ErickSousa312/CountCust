@@ -1,22 +1,20 @@
-
-
 import Head from 'next/head'
 import { useReducer, useState } from 'react'
 import { set } from 'mongoose'
 import Form from '@/components/Form/form'
+import Category from '@/components/Category/category'
 
-
-function reducer(categoria, action) {
-  switch (action.type) {
-    case 'change':
-      return { value: action.payload };
+function reducer(DadosLivros, payload) {
+  switch (payload.type) {
+    case 'addLivro':
+      console.log(payload)
+      return { ...DadosLivros, livros: [...DadosLivros.livros, payload.livro] };
     case 'reset':
-      return { value: '' };
+      return { livros: [] };
     default:
-      throw new Error();
+      throw new Error('Tipo de ação desconhecido.');
   }
 }
-
 export default function Home() {
   
   const [categorias, dispatch] = useReducer(reducer, {
@@ -56,18 +54,28 @@ export default function Home() {
       corSecundaria: "#FFEEDF",
     },
   });
-  
-    const handClick = ()=>{
-      dispatch({type: 'increment'})
-      dispatch({type: 'showText'})
-    }
 
-    const {} = categorias
+  const [DadosLivros, dispath] = useReducer(reducer, {
+    livros:[]}
+  )
 
   return (
-   <Form
-      categorias={Object.values(categorias).map((categoria) => categoria.nome)}
-   />
+    <div style={{padding: '50px 0px'}}>
+      <Form
+        categorias={Object.values(categorias).map((categoria) => categoria.nome)}
+        LivroCadastrado={(livro) => dispath({ type: 'addLivro', livro })}
+      />
+      {Object.values(categorias).map((categoria) => (
+          <Category
+          key={categoria.nome}
+          nome = {categoria.nome}
+          corPrimaria={categoria.corPrimaria}
+          corSecundaria={categoria.corSecundaria}
+          livros={DadosLivros.livros.filter((dado)=>dado.categoria==categoria.nome)}
+          />
+
+      ))}
+    </div>
   )
 }
 

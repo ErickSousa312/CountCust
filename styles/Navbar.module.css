@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
 .navbar {
   display: flex;
-  background-color: #000;
-  padding: 20px 10px;
+  background-color: #6278f7;
+  padding: 20px 0;
   justify-content: center;
+  align-content: center;
+  width: 100%;
 }
 
 .navbar a {
@@ -12,6 +16,21 @@
   transition: 0.5s;
   
 }
+.navbar div {
+  width: 70%;
+  
+}
+.navbar div h1{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 50px;
+  color: #fff;
+}
+.navbar div h3{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  color: #fff;
+}
+
 
 .navbar a:hover {
   color: #bbff00;

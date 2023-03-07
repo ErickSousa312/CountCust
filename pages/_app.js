@@ -2,10 +2,10 @@ import '../styles/globals.css'
 
 import MainContainer from '../components/MainContainer'
 
- function App({ Component, pageProps }) {
+ function App({ Component, children }) {
   return (  
   <MainContainer>
-    <Component{...pageProps}/>  
+    <Component{...children}/>  
   </MainContainer>
   )
 
